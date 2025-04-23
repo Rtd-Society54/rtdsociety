@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTD SOCIETY</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #0f0f0f;
+      color: #f4f4f4;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1a1a1a;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 3rem;
+      color: #e50914;
+      letter-spacing: 2px;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #ccc;
+    }
+    nav {
+      background-color: #111;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+    nav a {
+      color: #f4f4f4;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #e50914;
+    }
+    section {
+      padding: 40px 20px;
+      text-align: center;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #e50914;
+    }
+    .member-list {
+      margin-top: 20px;
+      list-style: none;
+      padding: 0;
+    }
+    .member-list li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    form {
+      margin-top: 30px;
+    }
+    input[type="text"], input[type="password"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      margin-right: 10px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background-color: #e50914;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .updates-list {
+      margin-top: 20px;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .updates-list li {
+      margin-bottom: 10px;
+      padding: 10px;
+      background-color: #1f1f1f;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #1a1a1a;
+      padding: 20px;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>RTD SOCIETY</h1>
+    <p>Rebels Taking Dominion — We don’t follow rules. We write them.</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#members">Members</a>
+    <a href="#updates">Updates</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About RTD</h2>
+    <p>The RTD Society is more than a name — it’s a movement. Formed by those who challenge the system and redefine limits. Our mission? Total Dominion. No apologies.</p>
+  </section>
+
+  <section id="members">
+    <h2>Meet the Society</h2>
+    <ul class="member-list" id="memberList">
+      <li>Titan (Founder & Leader)</li>
+      <li>Doustin</li>
+      <li>Rhamat</li>
+      <li>Broken Rice</li>
+    </ul>
+    <form id="memberForm">
+      <input type="text" id="newMember" placeholder="Enter your name" required>
+      <button type="submit">Join the Society</button>
+    </form>
+  </section>
+
+  <section id="updates">
+    <h2>News & Updates</h2>
+    <ul class="updates-list" id="updatesList">
+      <li>No updates yet. Stay tuned.</li>
+    </ul>
+    <form id="updateForm">
+      <input type="password" id="founderPassword" placeholder="Founder password" required>
+      <input type="text" id="newUpdate" placeholder="New update..." required>
+      <button type="submit">Post Update</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Contact RTD</h2>
+    <p>Got something to say? Drop a line. We’re always watching.</p>
+    <p>Email: contact@rtdsociety.com</p>
+  </section>
+
+  <footer>
+    &copy; 2025 RTD SOCIETY. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById('memberForm');
+    const memberList = document.getElementById('memberList');
+    const updateForm = document.getElementById('updateForm');
+    const updatesList = document.getElementById('updatesList');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('newMember').value.trim();
+      if (name) {
+        const newItem = document.createElement('li');
+        newItem.textContent = name;
+        memberList.appendChild(newItem);
+        document.getElementById('newMember').value = '';
+      }
+    });
+
+    updateForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const password = document.getElementById('founderPassword').value;
+      const update = document.getElementById('newUpdate').value.trim();
+      if (password === 'titanaccess' && update) {
+        const updateItem = document.createElement('li');
+        updateItem.textContent = update;
+        if (updatesList.firstElementChild && updatesList.firstElementChild.textContent === 'No updates yet. Stay tuned.') {
+          updatesList.removeChild(updatesList.firstElementChild);
+        }
+        updatesList.appendChild(updateItem);
+        document.getElementById('newUpdate').value = '';
+        document.getElementById('founderPassword').value = '';
+      } else {
+        alert('Only the founder can post updates.');
+      }
+    });
+  </script>
+</body>
+</html>
